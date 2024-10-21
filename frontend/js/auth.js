@@ -48,7 +48,7 @@ document.getElementById("signup-form").addEventListener("submit", async (e) => {
         });
 
         if (response.ok) {
-            window.location.href = "login.html";
+            window.location.href = 'login.html';
         } else {
             const errorMessage = await response.json();
             document.getElementById("error-message").innerText = errorMessage.message;
