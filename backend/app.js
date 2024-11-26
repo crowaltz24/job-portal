@@ -19,6 +19,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
-app.use("/api/recommend", recommendationRoutes);
+app.use("/api", recommendationRoutes);
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

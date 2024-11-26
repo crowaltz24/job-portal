@@ -52,26 +52,76 @@ async function displayUserDashboard() {
 async function getJobRecommendations(e) {
   e.preventDefault();
   const formData = new FormData(e.target);
-  const keywords = formData.get('keywords');
+  const keywords = formData.get("keywords");
 
-  const response = await fetch('/api/recommend', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-      },
-      body: JSON.stringify({ keywords })
+  const response = await fetch("http://localhost:3000/api/recommend-jobs", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify({ keywords }),
   });
 
   const recommendedJobs = await response.json();
-  const jobContainer = document.getElementById('recommended-jobs');
-  jobContainer.innerHTML = '';
-  recommendedJobs.forEach(job => {
-      const jobElement = document.createElement('div');
-      jobElement.innerText = `Title: ${job.title}, Description: ${job.description}`;
-      jobContainer.appendChild(jobElement);
+  const jobContainer = document.getElementById("recommended-jobs");
+
+  jobContainer.innerHTML = ""; //clears previous results btw
+
+  //table
+  const table = document.createElement("table");
+  table.style.width = "100%";
+  table.style.borderCollapse = "collapse";
+
+  //header
+  const thead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+
+  const headerCell1 = document.createElement("th");
+  headerCell1.textContent = "Job Title";
+  headerCell1.style.border = "1px solid #ddd";
+  headerCell1.style.padding = "8px";
+
+  const headerCell2 = document.createElement("th");
+  headerCell2.textContent = "Posted By";
+  headerCell2.style.border = "1px solid #ddd";
+  headerCell2.style.padding = "8px";
+
+  headerRow.appendChild(headerCell1);
+  headerRow.appendChild(headerCell2);
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  //body
+  const tbody = document.createElement("tbody");
+  recommendedJobs.forEach((job) => {
+    const row = document.createElement("tr");
+
+    const titleCell = document.createElement("td");
+    const titleLink = document.createElement("a");
+    titleLink.href = job.descriptionLink;
+    titleLink.textContent = job.title;
+    
+    titleCell.appendChild(titleLink);
+    titleCell.style.border = "1px solid #ddd";
+    titleCell.style.padding = "8px";
+    row.appendChild(titleCell);
+
+    //employer column
+    const employerCell = document.createElement("td");
+    employerCell.textContent = job.employer; // employer's username
+    employerCell.style.border = "1px solid #ddd";
+    employerCell.style.padding = "8px";
+    row.appendChild(employerCell);
+
+    tbody.appendChild(row);
   });
+
+  table.appendChild(tbody);
+  jobContainer.appendChild(table);
 }
+
+
 
 async function postJob(e) {
   e.preventDefault();
@@ -95,6 +145,44 @@ async function postJob(e) {
       jobStatus.innerText = 'Failed to post job.';
   }
 }
+
+async function getJobDetails(jobId) {
+  const response = await fetch(`/api/job/${jobId}`);
+  if (response.ok) {
+    const jobData = await response.json();
+    displayJobDetails(jobData);
+  } else {
+    console.error("Failed to fetch job details");
+  }
+}
+
+function displayJobDetails(jobData) {
+  const jobDetailsContainer = document.getElementById("job-details");
+  jobDetailsContainer.innerHTML = `
+        <h2>${jobData.title}</h2>
+        <p><strong>Employer:</strong> ${jobData.employer}</p>
+        <p><strong>Description:</strong> ${jobData.description}</p>
+        <p><strong>Location:</strong> ${jobData.location}</p>
+    `;
+}
+
+
+
+// function displayJobDescription(description) {
+//   const descriptionContainer = document.getElementById("job-description");
+//   if (!descriptionContainer) {
+//     const newContainer = document.createElement("div");
+//     newContainer.id = "job-description";
+//     newContainer.style.marginTop = "20px";
+//     newContainer.style.padding = "10px";
+//     newContainer.style.border = "1px solid #ddd";
+//     newContainer.style.backgroundColor = "#f9f9f9";
+//     newContainer.innerText = description;
+//     document.getElementById("recommended-jobs").appendChild(newContainer);
+//   } else {
+//     descriptionContainer.innerText = description;
+//   }
+// }
 
 function logout() {
   localStorage.removeItem('token');

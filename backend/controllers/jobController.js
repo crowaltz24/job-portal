@@ -20,3 +20,23 @@ exports.postJob = async (req, res) => {
         res.status(500).json({ message: 'Server error while posting job.' });
     }
 };
+
+exports.getJobDescription = async (req, res) => {
+  const { jobId } = req.params;
+
+  try {
+    const job = await Job.findById(jobId).populate("employer", "username");
+    if (!job) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
+    res.status(200).json({
+      title: job.title,
+      description: job.description,
+      employer: job.employer.username, //employer's username
+    });
+  } catch (error) {
+    console.error("Error fetching job:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
