@@ -1,73 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>ResumeFIT - AI-Powered Job Portal</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeFit - Job Portal</title>
+    <link rel="stylesheet" href="/css/test1.css"> <!-- Link to the updated CSS file -->
+    <script>
+        // Function to toggle the modal visibility for login and sign up
+        function toggleModal(modalId) {
+            var modal = document.getElementById(modalId);
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+        }
+
+        // Function to toggle the visibility of the dashboard/sidebar
+        function toggleDashboard() {
+            const dashboard = document.getElementById('dashboardSidebar');
+            dashboard.style.display = dashboard.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Welcome to ResumeFIT</h1>
-            <p>Your AI-Powered Job Search Platform</p>
-            <nav>
-                <a href="signup.html">Sign Up</a>
-                <a href="login.html">Login</a>
-            </nav>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">ResumeFit</div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#jobs">Find Jobs</a></li>
+            <li><a href="#candidates">Find Candidates</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button onclick="toggleModal('id01')">Login</button>
+            <button onclick="toggleModal('id02')">Sign Up</button>
         </div>
-    </header>
+        <!-- Three-Dot Menu Button -->
+        <button class="three-dot-menu" onclick="toggleDashboard()">⋮</button>
+    </div>
 
-    <section class="about">
-        <div class="container">
-            <h2>About ResumeFIT</h2>
-            <p>
-                ResumeFIT is an innovative job portal developed by Group 155 at VIT Bhopal University for our second-year project exhibition. 
-                Using Natural Language Processing (NLP) technology, ResumeFIT recommends job listings tailored to your skills and career preferences.
-            </p>
-            <p>
-                Whether you're a job seeker looking for the right opportunity or an employer posting vacancies, ResumeFIT ensures a seamless connection 
-                with AI-powered insights and personalized recommendations.
-            </p>
+    <!-- Sidebar/Dashboard -->
+    <div id="dashboardSidebar" class="sidebar" style="display: none;"> <!-- Initially hidden -->
+        <div class="profile-section">
+            <img src="img_avatar.png" alt="User Avatar" class="profile-pic">
+            <h3>John Doe</h3>
+            <p>Job Seeker</p>
         </div>
-    </section>
+        <ul class="nav-links">
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#jobs">Find Jobs</a></li>
+            <li><a href="#candidates">Find Candidates</a></li>
+        </ul>
+        <button class="more-options" onclick="alert('More options coming soon!')">⋮</button>
+    </div>
 
-    <section class="features">
-        <div class="container">
-            <h2>Our Key Features</h2>
-            <div class="feature-list">
-                <div class="feature-item">
-                    <h3>AI-Based Job Recommendations</h3>
-                    <p>
-                        Leveraging NLP models, ResumeFIT matches your skills, experience, and job search criteria to suggest the most relevant jobs.
-                    </p>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Existing Content -->
+        <section class="hero">
+            <h1>Welcome to ResumeFit</h1>
+            <p>Your gateway to finding the perfect job or candidate, powered by advanced NLP technology.</p>
+            <button class="cta-btn" onclick="toggleModal('id02')">Get Started</button>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Our Features</h2>
+            <div class="feature-cards">
+                <div class="card">
+                    <h3>Personalized Job Recommendations</h3>
+                    <p>Leverage our NLP-based engine to receive job recommendations tailored to your skills and preferences.</p>
                 </div>
-                <div class="feature-item">
-                    <h3>Employer Job Postings</h3>
-                    <p>
-                        Employers can post job listings, and our system will ensure that the right candidates see the right opportunities.
-                    </p>
+                <div class="card">
+                    <h3>Smart Candidate Matching</h3>
+                    <p>Employers can find the best candidates with AI-driven matching algorithms.</p>
                 </div>
-                <div class="feature-item">
-                    <h3>Seamless User Experience</h3>
-                    <p>
-                        Simple, user-friendly interfaces for job seekers and employers, making job applications and job postings easier than ever.
-                    </p>
+                <div class="card">
+                    <h3>Resume Optimization</h3>
+                    <p>Get AI feedback to craft a resume that stands out.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="cta">
-        <div class="container">
-            <h2>Join Us</h2>
-            <p>Start your job search or post a job today! Use our AI-based system to make smarter connections.</p>
-            <a href="signup.html" class="cta-button">Get Started</a>
-        </div>
-    </section>
+        <!-- Existing Additional Info Section -->
+        <section class="additional-info">
+            <div class="info-box">
+                <h2>Additional Information</h2>
+                <div class="info-item">
+                    <h3>Find Your Dream Job</h3>
+                    <p>Explore thousands of job listings across industries. Your next opportunity is just a click away.</p>
+                    <button class="cta-btn">Browse Jobs</button>
+                </div>
+                <div class="info-item">
+                    <h3>Find the Right Talent</h3>
+                    <p>Our platform connects you with top professionals who are perfect for your team.</p>
+                    <button class="cta-btn">Search Candidates</button>
+                </div>
+                <div class="info-item">
+                    <h3>Contact Us</h3>
+                    <p>Have questions? Reach out to us for support or collaboration opportunities.</p>
+                    <button class="cta-btn">Get in Touch</button>
+                </div>
+            </div>
+        </section>
 
-    <footer>
-        <div class="container">
-            <p>ResumeFIT - Powered by Group 155, VIT Bhopal University</p>
+        <footer>
+            <p>&copy; 2024 ResumeFit. By Group 155, VIT Bhopal University. All Rights Reserved.</p>
+        </footer>
+
+        <!-- Login Modal -->
+        <div id="id01" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" onclick="toggleModal('id01')">&times;</span>
+                <h2>Login</h2>
+                <form id="login-form" action="/login" method="POST">
+                    <label for="Username">User Name:</label>
+                    <input type="text" name="username" placeholder="Username" required><br><br>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" placeholder="Password" required><br><br>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
         </div>
-    </footer>
+
+        <!-- Sign-Up Modal -->
+        <div id="id02" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" onclick="toggleModal('id02')">&times;</span>
+                <h2>Sign Up</h2>
+                <form id="signup-form" action="/signup" method="POST">
+                    <label for="username">User Name:</label>
+                    <input type="text" name="username" placeholder="Username" required><br><br>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" placeholder="Password" required><br><br>
+                    <select name="role" required>
+                        <option value="" disabled selected>Select Role</option>
+                        <option value="employee">Employee</option>
+                        <option value="employer">Employer</option>
+                    </select>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<script src="js/auth.js"></script>
 </body>
 </html>
