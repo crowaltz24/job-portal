@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ResumeFit - Job Portal</title>
-    <link rel="stylesheet" href="/css/test1.css"> <!-- Link to the updated CSS file -->
+    <link rel="stylesheet" href="/css/styles.css">
     <script>
-        // Function to toggle the modal visibility for login and sign up
+        //modal visibility
         function toggleModal(modalId) {
             var modal = document.getElementById(modalId);
             if (modal.style.display === 'block') {
@@ -16,7 +16,7 @@
             }
         }
 
-        // Function to toggle the visibility of the dashboard/sidebar
+        //visibility of dashboard/sidebar
         function toggleDashboard() {
             const dashboard = document.getElementById('dashboardSidebar');
             dashboard.style.display = dashboard.style.display === 'block' ? 'none' : 'block';
@@ -24,7 +24,6 @@
     </script>
 </head>
 <body>
-    <!-- Navbar -->
     <div class="navbar">
         <div class="logo">ResumeFit</div>
         <ul class="nav-links">
@@ -37,12 +36,12 @@
             <button onclick="toggleModal('id01')">Login</button>
             <button onclick="toggleModal('id02')">Sign Up</button>
         </div>
-        <!-- Three-Dot Menu Button -->
+
         <button class="three-dot-menu" onclick="toggleDashboard()">⋮</button>
     </div>
 
-    <!-- Sidebar/Dashboard -->
-    <div id="dashboardSidebar" class="sidebar" style="display: none;"> <!-- Initially hidden -->
+
+    <div id="dashboardSidebar" class="sidebar" style="display: none;">
         <div class="profile-section">
             <img src="img_avatar.png" alt="User Avatar" class="profile-pic">
             <h3>John Doe</h3>
@@ -57,9 +56,8 @@
         <button class="more-options" onclick="alert('More options coming soon!')">⋮</button>
     </div>
 
-    <!-- Main Content -->
+
     <div class="main-content">
-        <!-- Existing Content -->
         <section class="hero">
             <h1>Welcome to ResumeFit</h1>
             <p>Your gateway to finding the perfect job or candidate, powered by advanced NLP technology.</p>
@@ -84,7 +82,6 @@
             </div>
         </section>
 
-        <!-- Existing Additional Info Section -->
         <section class="additional-info">
             <div class="info-box">
                 <h2>Additional Information</h2>
@@ -110,7 +107,7 @@
             <p>&copy; 2024 ResumeFit. By Group 155, VIT Bhopal University. All Rights Reserved.</p>
         </footer>
 
-        <!-- Login Modal -->
+        <!-- login modal -->
         <div id="id01" class="modal" style="display:none;">
             <div class="modal-content">
                 <span class="close" onclick="toggleModal('id01')">&times;</span>
@@ -125,7 +122,7 @@
             </div>
         </div>
 
-        <!-- Sign-Up Modal -->
+        <!-- signup nmodal -->
         <div id="id02" class="modal" style="display:none;">
             <div class="modal-content">
                 <span class="close" onclick="toggleModal('id02')">&times;</span>
