@@ -28,20 +28,19 @@
         <div class="logo">ResumeFit</div>
         <ul class="nav-links">
             <li><a href="#features">Features</a></li>
-            <li><a href="#jobs">Find Jobs</a></li>
-            <li><a href="#candidates">Find Candidates</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a onclick="toggleModal('id01')">Get Recommendations</a></li>
+            <li><a href="#additional-info">Know More</a></li>
+            <li><a href="mailto:example@resumefit.com">Contact</a></li>
         </ul>
         <div class="auth-buttons">
             <button onclick="toggleModal('id01')">Login</button>
             <button onclick="toggleModal('id02')">Sign Up</button>
         </div>
-
-        <button class="three-dot-menu" onclick="toggleDashboard()">⋮</button>
+        <!-- <button class="three-dot-menu" onclick="toggleDashboard()">⋮</button> -->
     </div>
 
 
-    <div id="dashboardSidebar" class="sidebar" style="display: none;">
+    <!-- <div id="dashboardSidebar" class="sidebar" style="display: none;">
         <div class="profile-section">
             <img src="img_avatar.png" alt="User Avatar" class="profile-pic">
             <h3>John Doe</h3>
@@ -54,13 +53,13 @@
             <li><a href="#candidates">Find Candidates</a></li>
         </ul>
         <button class="more-options" onclick="alert('More options coming soon!')">⋮</button>
-    </div>
+    </div> -->
 
 
     <div class="main-content">
         <section class="hero">
             <h1>Welcome to ResumeFit</h1>
-            <p>Your gateway to finding the perfect job or candidate, powered by advanced NLP technology.</p>
+            <p>Your gateway to finding the perfect job, powered by advanced NLP technology.</p>
             <button class="cta-btn" onclick="toggleModal('id02')">Get Started</button>
         </section>
 
@@ -77,28 +76,23 @@
                 </div>
                 <div class="card">
                     <h3>Resume Optimization</h3>
-                    <p>Get AI feedback to craft a resume that stands out.</p>
+                    <p>Get AI feedback to craft a resume that stands out. Find what job is best for You.</p>
                 </div>
             </div>
         </section>
 
-        <section class="additional-info">
+        <section id = "additional-info" class="additional-info">
             <div class="info-box">
                 <h2>Additional Information</h2>
                 <div class="info-item">
                     <h3>Find Your Dream Job</h3>
                     <p>Explore thousands of job listings across industries. Your next opportunity is just a click away.</p>
-                    <button class="cta-btn">Browse Jobs</button>
-                </div>
-                <div class="info-item">
-                    <h3>Find the Right Talent</h3>
-                    <p>Our platform connects you with top professionals who are perfect for your team.</p>
-                    <button class="cta-btn">Search Candidates</button>
+                    <button class="cta-btn" onclick="toggleModal('id01')">Browse Jobs</button>
                 </div>
                 <div class="info-item">
                     <h3>Contact Us</h3>
                     <p>Have questions? Reach out to us for support or collaboration opportunities.</p>
-                    <button class="cta-btn">Get in Touch</button>
+                    <button class="cta-btn" onclick="location.href='mailto:example@resumefit.com';">Get in Touch</button>
                 </div>
             </div>
         </section>
@@ -118,6 +112,9 @@
                     <label for="password">Password:</label>
                     <input type="password" name="password" placeholder="Password" required><br><br>
                     <button type="submit">Login</button>
+                    <br><br><br>
+                    <p>Don't have an account?</p>
+                    <button onclick="toggleModal('id02'), toggleModal('id01')">Sign Up here!</button>
                 </form>
             </div>
         </div>
@@ -138,6 +135,9 @@
                         <option value="employer">Employer</option>
                     </select>
                     <button type="submit">Sign Up</button>
+                    <br><br><br>
+                    <p>Already have an account?</p>
+                    <button onclick="toggleModal('id01'), toggleModal('id02')">Log in here!</button>
                 </form>
             </div>
         </div>

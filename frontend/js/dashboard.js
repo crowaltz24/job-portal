@@ -23,10 +23,10 @@ async function displayUserDashboard() {
       
       if (user.role === 'employee') {
           document.getElementById('content').innerHTML = `
-              <h2>Job Recommendations</h2>
+              <h2>Look up Listings today!</h2>
               <form id="recommendation-form">
                   <input type="text" name="keywords" placeholder="Enter skills or job title" required>
-                  <button type="submit">Get Recommendations</button>
+                  <button type="submit">Get Results</button>
               </form>
               <div id="recommended-jobs"></div>
           `;
@@ -122,7 +122,6 @@ async function getJobRecommendations(e) {
 }
 
 
-
 async function postJob(e) {
   e.preventDefault();
   const formData = new FormData(e.target);
@@ -185,6 +184,12 @@ function displayJobDetails(jobData) {
 // }
 
 function logout() {
-  localStorage.removeItem('token');
-  window.location.href = 'index.html';
+  const user = document.getElementById("user-role")
+  if (user.role === "employee") {
+    window.location.href = "/employee-dash.html";
+  } else if (user.role === "employer") {
+    window.location.href = "/employer-dash.html";
+  } else {
+    console.error("Unexpected role:", role);
+  }
 }

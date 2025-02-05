@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <link rel="stylesheet" href="test1.css">
+    <script>
+        // Function to toggle the modal visibility for login and sign up
+        function toggleModal(modalId) {
+            var modal = document.getElementById(modalId);
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+        }
+
+        // Function to toggle the visibility of the sidebar
+        function toggleDashboard() {
+            const dashboard = document.getElementById('dashboardSidebar');
+            dashboard.style.display = dashboard.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <!-- Add your logo image here -->
+            <img src="logo.png" alt="Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#jobs">Find Jobs</a></li>
+            <li><a href="#candidates">Find Candidates</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button onclick="toggleModal('id01')">Login</button>
+            <button onclick="toggleModal('id02')">Sign Up</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <section class="hero">
+            <h1>Welcome to ResumeFit</h1>
+            <p>Your gateway to finding the perfect job or candidate, powered by advanced NLP technology.</p>
+            <button class="cta-btn">Get Started</button>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <h2>Our Features</h2>
+            <div class="feature-cards">
+                <div class="card">
+                    <h3>Personalized Job Recommendations</h3>
+                    <p>Leverage our NLP-based engine to receive job recommendations tailored to your skills and preferences.</p>
+                </div>
+                <div class="card">
+                    <h3>Smart Candidate Matching</h3>
+                    <p>Employers can find the best candidates with AI-driven matching algorithms.</p>
+                </div>
+                <div class="card">
+                    <h3>Resume Optimization</h3>
+                    <p>Get AI feedback to craft a resume that stands out.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 ResumeFit. All Rights Reserved.</p>
+        </footer>
+
+        <!-- Login Modal -->
+        <div id="id01" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" onclick="toggleModal('id01')">&times;</span>
+                <h2>Login</h2>
+                <form action="/login" method="POST">
+                    <label for="username">Username:</label>
+                    <input type="text" id="email" name="email" required><br><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required><br><br>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Sign-Up Modal -->
+        <div id="id02" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" onclick="toggleModal('id02')">&times;</span>
+                <h2>Sign Up</h2>
+                <form action="/signup" method="POST">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required><br><br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required><br><br>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
