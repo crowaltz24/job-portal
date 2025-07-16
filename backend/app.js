@@ -4,6 +4,8 @@ const path = require("path");
 const authRoutes = require("./routes/authRoutes");
 const jobRoutes = require("./routes/jobRoutes");
 const recommendationRoutes = require("./routes/recommendationRoutes");
+const resumeRoutes = require("./routes/resumeRoutes");
+
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -19,6 +21,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
-app.use("/api", recommendationRoutes);
+app.use("/api/recommendations", recommendationRoutes);
+app.use("/api/resumes", resumeRoutes);
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

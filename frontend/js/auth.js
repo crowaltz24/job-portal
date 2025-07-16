@@ -17,12 +17,21 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             const data = await response.json();
+            //console.log("Server response:", data);
 
             if (response.ok) {
-                localStorage.setItem('token', data.token);
-                window.location.href = '/dashboard.html';
+              localStorage.setItem("token", data.token);
+              const role = data.role;       // ROLE DEBUG KEEP THIS HERE
+              console.log("Logged in role:", role);
+              if (role === "employee") {
+                window.location.href = "/employee-dash.html";
+              } else if (role === "employer") {
+                window.location.href = "/employer-dash.html";
+              } else {
+                console.error("Unexpected role:", role);
+              }
             } else {
-                alert(data.message);
+              alert(data.message);
             }
         });
     } else {
@@ -48,7 +57,26 @@ document.getElementById("signup-form").addEventListener("submit", async (e) => {
         });
 
         if (response.ok) {
-            window.location.href = 'index.html';
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+            
+            localStorage.setItem("token", data.token);
+              const role = data.role;       // ROLE DEBUG KEEP THIS HERE
+              console.log("Logged in role:", role);
+              if (role === "employee") {
+                window.location.href = "/employee-dash.html";
+              } else if (role === "employer") {
+                window.location.href = "/employer-dash.html";
+              } else {
+                console.error("Unexpected role:", role);
+              }
         } else {
             const errorMessage = await response.json();
             document.getElementById("error-message").innerText = errorMessage.message;
